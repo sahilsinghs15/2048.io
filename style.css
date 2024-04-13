@@ -5,61 +5,151 @@ body {
   font-family: "Clear Sans", "Helvetica Neue"
 }
 
+.main-container{
+  width: 450px;
+  background-color: honeydew;
+}
+
 h1 {
-  font-size: 80px;
+  font-size: 48px;
   line-height: 0.7;
   color: #776E65;
-  margin: 0px;
+  margin-top: 0px;
+  font-weight: bolder;
 }
 
 .container {
-  width: 468px;
+  width: 100%;
   margin-top: 30px;
+  background-color: #f7d5ea;
 }
 
 .info {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 2px;
 }
 
 .grid-container{
   display: flex;
   flex-wrap: wrap;
-  width: 456px;
-  height: 456px;
-  background-color: #d8f2f0;
-  border: 7px solid #f481c4;
-  border-radius: 6px;
-  margin-top: 20px;
+  width: 350px;
+  height: 350px;
+  background-color: #492957;
+  border: 5px solid #501041;
+  border-radius: 3px;
+  margin-top: 5px;
 }
 
 .grid-container div {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   margin: 7px;
-  border-radius: 3px;
+  border-radius: 2px;
   background-color: #87ace4;
-  color: #c5ea40;
+  color: #713e15;
   font-weight: bold;
   text-align: center;
-  font-size: 60px;
+  font-size: 40px;
   line-height: 1.6;
 }
 
 .score-container {
   text-align: center;
-  width: 70px;
-  height: 60px;
+  position: relative;
+  right: 100px;
+  width: 80px;
+  height: 58px;
   border-radius: 3px;
   background-color: #8f7a66;
   color: #FFFFFF;
 }
 
 #score {
-  font-size: 30px;
+  font-size: 20px;
+}
+
+.score-title {
+  font-size: 14px;
+}
+
+
+
+@media screen and (max-width: 365px) {
+  .main-container{
+  width: 450px;
+  background-color: honeydew;
+}
+
+h1 {
+  position: relative;
+  left: 20px;
+  font-size: 48px;
+  line-height: 0.7;
+  color: #776E65;
+  margin-top: 0px;
+  font-weight: bolder;
+}
+
+.container {
+  width: 100%;
+  margin-top: 30px;
+  background-color: #f7d5ea;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+#result{
+  position: relative;
+  left: 20px;
+}
+
+.grid-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 310px;
+  height: 310px;
+  background-color: #325b58;
+  border: 5px solid #e8f499;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+
+.grid-container div {
+  width: 60px;
+  height: 60px;
+  margin: 7px;
+  border-radius: 2px;
+  background-color: #87ace4;
+  color: #c0101b;
+  font-weight: bold;
+  text-align: center;
+  font-size: 28px;
+  line-height: 1.6;
+}
+
+.score-container {
+  text-align: center;
+  width: 60px;
+  height: 50px;
+  border-radius: 3px;
+  background-color: #8f7a66;
+  color: #FFFFFF;
+}
+
+#score {
+  font-size: 20px;
 }
 
 .score-title {
   font-size: 16px;
+  font-weight: bold;
+}
+
+
+
 }

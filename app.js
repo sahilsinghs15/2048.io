@@ -28,6 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
     } else generate();
   }
 
+
+
+
   function moveRight() {
     for (let i = 0; i < 16; i++) {
       if (i % 4 === 0) {
@@ -138,20 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  //assign functions to keyCodes
-  function control(e) {
-    if (e.keyCode === 37) {
-      keyLeft();
-    } else if (e.keyCode === 38) {
-      keyUp();
-    } else if (e.keyCode === 39) {
-      keyRight();
-    } else if (e.keyCode === 40) {
-      keyDown();
-    }
-  }
-  document.addEventListener('keyup', control);
-
   function keyRight() {
     moveRight();
     combineRow();
@@ -180,12 +169,95 @@ document.addEventListener('DOMContentLoaded', () => {
     generate();
   }
 
+
+// <-------------------------------------------------------------------------------------------------------------------------------------------->
+//<--------------------------------------Laptop Or Computer Oriented------------------------------------------------------------------------------->
+  
+
+  //assign functions to keyCodes
+  function control(e) {
+    if (e.keyCode === 37) {
+      keyLeft();
+    } else if (e.keyCode === 38) {
+      keyUp();
+    } else if (e.keyCode === 39) {
+      keyRight();
+    } else if (e.keyCode === 40) {
+      keyDown();
+    }
+  }
+  document.addEventListener('keyup', control);
+
+  
+
+
+  // <------------------------------------------------------------------------------------------------------->
+  // <-----------------------------------Laptop or Computer Oriented Ends here-------------------------------------------------------------------->
+
+
+  // <------------------------------------------------------------------------------------------------------------------------------->
+  //<----------------------------------------Mobile Oriented Starts here ----------------------------------------------------------------------->
+
+    const touchAreas = document.querySelectorAll(".main-container");
+
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    // Loop through each touch area and add event listeners
+    touchAreas.forEach(touchArea => {
+    
+      touchArea.addEventListener("touchstart", function start(event) {
+        touchStartX = event.touches[0].clientX;
+        event.preventDefault();
+        touchStartY = event.touches[0].clientY;
+      });
+
+      touchArea.addEventListener("touchend", function end(event) {
+        event.preventDefault();
+        touchEndX = event.changedTouches[0].clientX;
+        touchEndY = event.changedTouches[0].clientY;
+        handleSwipe(event);
+      });
+    });
+
+    function handleSwipe(event) {
+        event.preventDefault();
+        const deltaX = touchEndX - touchStartX;
+        const deltaY = touchEndY - touchStartY;
+
+        if(deltaX != 0 && deltaY != 0){
+          if (Math.abs(deltaX) > Math.abs(deltaY)) {
+            if (deltaX > 0 ) {
+              keyRight();
+            } else {
+              keyLeft();
+            }
+          } else {
+            if (deltaY > 0 ) {
+              keyDown();
+            } else {
+              keyUp();
+            }
+          }
+        }
+    }
+      
+
+  // <-------------------------------------------------------------------------------------------------------------------------------------------->
+  // <---------------------------------------------Mobile Oriented Ends here---------------------------------------------------------->
+
+
   //check for the number 2048 in the squares to win
   function checkForWin() {
     for (let i = 0; i < squares.length; i++) {
       if (squares[i].innerHTML == 2048) {
         resultDisplay.innerHTML = 'You WIN';
         document.removeEventListener('keyup', control);
+        touchAreas.forEach(touchArea =>{
+          touchArea.removeEventListener("touchstart" , start());
+        })
         setTimeout(() => clear(), 3000);
       }
     }
@@ -202,6 +274,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (zeros === 0) {
       resultDisplay.innerHTML = 'You LOSE';
       document.removeEventListener('keyup', control);
+      touchAreas.forEach(touchArea =>{
+        touchArea.removeEventListener("touchstart" , start());
+      })
       setTimeout(() => clear(), 3000);
     }
   }
